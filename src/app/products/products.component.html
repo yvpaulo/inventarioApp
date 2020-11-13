@@ -1,0 +1,51 @@
+<h1>Produtos</h1>
+<button mat-mini-fab color="accent" ><!-- (click)="addProduct()" -->
+  <mat-icon>plus_one</mat-icon>
+</button>
+
+<clr-datagrid>
+<clr-dg-column clrDgField="name">Nome</clr-dg-column>
+<clr-dg-column>Data da contagem</clr-dg-column>
+<clr-dg-column clrDgField="active">Active</clr-dg-column>
+<clr-dg-row *clrDgItems="let product of products$ | async; trackBy
+trackById"
+[clrDgItem]="product">
+<clr-dg-action-overflow>
+  <button class="action-item"
+  (click)="onEdit(product)">Editar</button>
+  <button class="action-item"
+  (click)="onDelete(product)">Deletar</button>
+  </clr-dg-action-overflow>
+<clr-dg-cell>{{product.name}}</clr-dg-cell>
+<clr-dg-cell>{{product.countDate}}</clr-dg-cell>
+<clr-dg-cell>
+<span class="label" [ngClass]="{'label-success':
+product.active, 'label-danger':
+!product.active}">{{product.active ?
+'Active': 'Inactive'}}</span>
+</clr-dg-cell>
+</clr-dg-row>
+<clr-dg-footer>
+<clr-dg-pagination #pagination [clrDgPageSize]="10">
+<clr-dg-page-size [clrPageSizeOptions]="[10,20,50]">Produtos
+por pág</clr-dg-page-size>
+{{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+of {{pagination.totalItems}} products
+</clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
+
+<spa-delete-product-modal
+*ngIf="delete"
+[product]="productToBeDeleted"
+(cancel)="handleCancel()"
+(confirm)="confirmDelete()"
+>
+</spa-delete-product-modal>
+
+<!-- <in-product
+  *ngIf="productOpen"
+  [product]="selectedProduct"
+  (finish)="handleFinish($event)"
+></in-product> -->
+

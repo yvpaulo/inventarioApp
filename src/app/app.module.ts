@@ -7,6 +7,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CustonTableComponent } from './custon-table/custon-table.component';
 import { CustonToolbarComponent } from './custon-toolbar/custon-toolbar.component';
+import { ClarityModule } from '@clr/angular';
+import { ProductsComponent } from './products/products.component';
+import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 
 
 
@@ -24,6 +28,8 @@ import { CustonToolbarComponent } from './custon-toolbar/custon-toolbar.componen
     HomeComponent,
     CustonTableComponent,
     CustonToolbarComponent,
+    ProductsComponent,
+    DeleteProductModalComponent,
 
 
   ],
@@ -36,6 +42,8 @@ import { CustonToolbarComponent } from './custon-toolbar/custon-toolbar.componen
     MatToolbarModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    ClarityModule,
+    MatButtonModule
 
 
   ],
