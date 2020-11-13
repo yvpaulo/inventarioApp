@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -18,6 +19,8 @@ import { CustonToolbarComponent } from './custon-toolbar/custon-toolbar.componen
 import { ClarityModule } from '@clr/angular';
 import { ProductsComponent } from './products/products.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -30,6 +33,8 @@ import { DeleteProductModalComponent } from './delete-product-modal/delete-produ
     CustonToolbarComponent,
     ProductsComponent,
     DeleteProductModalComponent,
+    ProductFormComponent,
+    ProductComponent
 
 
   ],
@@ -43,7 +48,8 @@ import { DeleteProductModalComponent } from './delete-product-modal/delete-produ
     MatPaginatorModule,
     MatFormFieldModule,
     ClarityModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
 
 
   ],

@@ -1,5 +1,5 @@
 <h1>Produtos</h1>
-<button mat-mini-fab color="accent" ><!-- (click)="addProduct()" -->
+<button mat-mini-fab color="accent" (click)="addProduct()" >
   <mat-icon>plus_one</mat-icon>
 </button>
 
@@ -24,13 +24,14 @@ product.active, 'label-danger':
 !product.active}">{{product.active ?
 'Active': 'Inactive'}}</span>
 </clr-dg-cell>
+
 </clr-dg-row>
 <clr-dg-footer>
 <clr-dg-pagination #pagination [clrDgPageSize]="10">
 <clr-dg-page-size [clrPageSizeOptions]="[10,20,50]">Produtos
 por pág</clr-dg-page-size>
 {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-of {{pagination.totalItems}} products
+of {{pagination.totalItems}} products. Estoque Total = {{totalQuant}}
 </clr-dg-pagination>
 </clr-dg-footer>
 </clr-datagrid>
@@ -42,10 +43,15 @@ of {{pagination.totalItems}} products
 (confirm)="confirmDelete()"
 >
 </spa-delete-product-modal>
+<spa-product-form
+*ngIf="productOpen"
+[product]="selectedProduct"
+(finish)="handleFinish($event)"
+></spa-product-form>
+
 
 <!-- <in-product
-  *ngIf="productOpen"
-  [product]="selectedProduct"
-  (finish)="handleFinish($event)"
+*ngIf="productOpen"
+[product]="selectedProduct"
+(finish)="handleFinish($event)"
 ></in-product> -->
-

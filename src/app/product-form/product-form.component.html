@@ -1,0 +1,78 @@
+<form [formGroup]="productForm">
+  <clr-wizard #productWizard [clrWizardOpen]="true"
+  clrWizardSize="lg" (clrWizardOnCancel)="handleClose()">
+  <clr-wizard-title>{{product? 'Editar Produto' : 'Adicionar Novo Produto'}}</clr-wizard-title>
+  <clr-wizard-button [type]="'cancel'" (click)="handleClose()">Cancelar</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Próximo</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'" (click)="handleClose()">Finalizar</clr-wizard-button>
+
+  <clr-wizard-page>
+  <ng-template clrPageTitle>Cadastrar Produto</ng-template>
+
+  <div formGroupName="basic">
+
+    <clr-input-container>
+    <label for="product-name">Nome do produto *</label>
+    <input clrInput type="text" id="product-name"
+    placeholder="produto x..." formControlName="name">
+    </clr-input-container>
+
+    <clr-input-container>
+      <label for="product-name">Unidade Básica *</label>
+      <input clrInput type="text" id="product-unity"
+      placeholder="Kg..." formControlName="unity">
+      </clr-input-container>
+  </div>
+
+  </clr-wizard-page>
+  <clr-wizard-page>
+  <ng-template clrPageTitle>Cadastrar Embalagens</ng-template>
+  ...A ser implementado
+  </clr-wizard-page>
+  </clr-wizard>
+  </form>
+
+<!--  <form [formGroup]="productForm">
+  <clr-wizard #productWizard [clrWizardOpen]="true"
+  clrWizardSize="lg" (clrWizardOnCancel)="handleClose()">
+  <clr-wizard-title>{{product? 'Editar' : 'Adicionar novo'}}</clr-wizard-title>
+  <clr-wizard-button [type]="'cancel'" (click)="handleClose()">Cancelar</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Próximo</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'"  (click)="handleClose()">Finalizar</clr-wizard-button>
+  <clr-wizard-page>
+  <ng-template clrPageTitle>Cadastrar Produto</ng-template>
+  ...
+  </clr-wizard-page>
+  <clr-wizard-page>
+  <ng-template clrPageTitle>Tipos de containers</ng-template>
+  ...
+  </clr-wizard-page>
+  </clr-wizard>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Cadastro de Produto</ng-template>
+    <div formGroupName="basic">
+
+    <clr-input-container>
+    <label for="product-name">Nome do produto *</label>
+    <input clrInput type="text" id="product-name"
+    placeholder="produto x..." formControlName="name">
+    </clr-input-container>
+
+    <clr-input-container>
+      <label for="product-name">Unidade Básica *</label>
+      <input clrInput type="text" id="product-unity"
+      placeholder="Kg..." formControlName="unity">
+      </clr-input-container>
+
+    <div class="toggle-switch">
+    <input type="checkbox" id="active"
+    formControlName="active">
+    <label for="active">Ativ0</label>
+    </div>
+     </div>
+      </clr-wizard-page>
+  </form>
+-->
