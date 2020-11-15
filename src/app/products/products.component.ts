@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { ProductsService, IProduct } from './../product.service';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,9 @@ export class ProductsComponent implements OnInit {
   products$: Observable<IProduct[]> = this.productsService.products$;
   totalQuant: number;
   delete = false;
+  counting = false;
   productToBeDeleted;
+  productToBeCounted;
   selectedProduct: IProduct;
   productOpen: boolean;
   constructor(private productsService: ProductsService) {
@@ -36,14 +38,24 @@ export class ProductsComponent implements OnInit {
     this.handleCancel();
     this.productsService.removeProduct(this.productToBeDeleted);
   }
+ /*  confirmCount() {
+    this.handleCancel();
+    //this.productsService.editProduct(this.selectedProduct.id, event.product);
+  } */
   addProduct() {
     this.productOpen = true;
     this.selectedProduct = undefined;
 }
+onCount(product) {
+    this.counting = true;
+    this.onEdit(product);
+}
 
 onEdit(product) {
+    //this.count = counting;
     this.productOpen = true;
     this.selectedProduct = product;
+    console.log("on edit "+ this.counting)
 }
 
 addTotal(quant){
@@ -56,15 +68,15 @@ handleFinish(event) {
     if (event && event.product) {
         if (this.selectedProduct) {
             // Edit Flow
-            console.log('aqui no handle do editar')
+
             this.productsService.editProduct(this.selectedProduct.id, event.product);
         } else {
             // Save New
             this.productsService.addProduct(event.product);
-            console.log('aqui no handle do editar add')
 
         }
     }
     this.productOpen = false;
+    this.counting=false;
 }
 }

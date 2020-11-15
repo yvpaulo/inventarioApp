@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, ViewChild, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
@@ -13,27 +14,34 @@ export class ProductFormComponent implements OnInit, OnChanges {
 
 productForm: FormGroup;
 @Input() product;
+@Input() counting: boolean;
 @Output() finish = new EventEmitter();
 @ViewChild('productWizard', { static: false }) productWizard: ClrWizard;
+quant:number;
 constructor(private fb: FormBuilder) {
 this.productForm = this.fb.group({
   basic: fb.group({
   name: ['', Validators.required],
   active: true,
-  unity: ['', Validators.required]
+  unity: ['', Validators.required],
+  quant:0,
+  countDate: ''
   }),
 });
+
 }
 
 ngOnInit() {
   if (this.product) {
+
       this.productForm.setValue({
           basic: {
-              ...pick(this.product, ['name', 'unity', 'active']),
+              ...pick(this.product, ['name', 'unity', 'active', 'quant', 'countDate']),
 
           },
 
       });
+
 
   }
 }

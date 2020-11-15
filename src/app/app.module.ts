@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -20,6 +21,7 @@ import { ClarityModule } from '@clr/angular';
 import { ProductsComponent } from './products/products.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { CountProductComponent } from './count-product/count-product.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     ProductsComponent,
     DeleteProductModalComponent,
     ProductFormComponent,
+    CountProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
     MatFormFieldModule,
     ClarityModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],

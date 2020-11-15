@@ -4,6 +4,7 @@
 </button>
 
 <clr-datagrid>
+  <clr-dg-column>Contar</clr-dg-column>
 <clr-dg-column clrDgField="name">Nome</clr-dg-column>
 <clr-dg-column clrDgField="countDate">Data da contagem</clr-dg-column>
 <clr-dg-column clrDgField="quant">Quantidade</clr-dg-column>
@@ -17,9 +18,12 @@ trackById"
   <button class="action-item"
   (click)="onDelete(product)">Deletar</button>
   </clr-dg-action-overflow>
+  <clr-dg-cell>
+    <button mat-raised-button (click)="onCount(product)">Contar</button>
+  </clr-dg-cell>
 <clr-dg-cell>{{product.name}}</clr-dg-cell>
 <clr-dg-cell>{{product.countDate}}</clr-dg-cell>
-<clr-dg-cell >{{product.quant}}</clr-dg-cell>
+<clr-dg-cell >{{product.quant +" "+ product.unity}}</clr-dg-cell>
 <clr-dg-cell>
 <span class="label" [ngClass]="{'label-success':
 product.active, 'label-danger':
@@ -30,7 +34,7 @@ product.active, 'label-danger':
 </clr-dg-row>
 <clr-dg-footer>
 <clr-dg-pagination #pagination [clrDgPageSize]="10">
-<clr-dg-page-size [clrPageSizeOptions]="[10,20,50]">Produtos
+<clr-dg-page-size [clrPageSizeOptions]="[2,10,20,50]">Produtos
 por pág</clr-dg-page-size>
 {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
 de {{pagination.totalItems}} produtos.</clr-dg-pagination>
@@ -43,17 +47,19 @@ de {{pagination.totalItems}} produtos.</clr-dg-pagination>
 [product]="productToBeDeleted"
 (cancel)="handleCancel()"
 (confirm)="confirmDelete()"
->
-</spa-delete-product-modal>
+></spa-delete-product-modal>
+
 <spa-product-form
 *ngIf="productOpen"
 [product]="selectedProduct"
+[counting]="counting"
 (finish)="handleFinish($event)"
 ></spa-product-form>
 
-
-<!-- <in-product
-*ngIf="productOpen"
-[product]="selectedProduct"
-(finish)="handleFinish($event)"
-></in-product> -->
+<!-- <spa-count-product
+*ngIf="count"
+[product]="productToBeCounted"
+(cancel)="handleCancel()"
+(confirm)="handleFinish($event)"
+></spa-count-product>
+ -->
