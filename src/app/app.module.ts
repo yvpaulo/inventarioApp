@@ -20,10 +20,6 @@ import { ClarityModule } from '@clr/angular';
 import { ProductsComponent } from './products/products.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 import { ProductFormComponent } from './product-form/product-form.component';
-import { ProductComponent } from './product/product.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -34,9 +30,6 @@ import { ProductComponent } from './product/product.component';
     ProductsComponent,
     DeleteProductModalComponent,
     ProductFormComponent,
-    ProductComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -50,7 +43,6 @@ import { ProductComponent } from './product/product.component';
     ClarityModule,
     MatButtonModule,
     ReactiveFormsModule
-
 
   ],
   providers: [],

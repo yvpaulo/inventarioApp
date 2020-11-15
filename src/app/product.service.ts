@@ -9,7 +9,6 @@ active: boolean;
 countDate: string;
 unity: string;
 quant:number;
-features?: string[];
 }
 function generateId() {
 return Math.floor(Math.random() * 10000);
@@ -59,7 +58,7 @@ export class ProductsService {
           },
           ...this.products,
       ];
-      this.products$.next(this.products);
+      this.products$.next(this.products)
   }
 
   editProduct(id, product) {

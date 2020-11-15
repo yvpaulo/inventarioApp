@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, ViewChild, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
-//import pick from 'lodash-es/pick';
+import {pick} from 'lodash/';
 
 @Component({
   selector: 'spa-product-form',
@@ -18,26 +18,24 @@ productForm: FormGroup;
 constructor(private fb: FormBuilder) {
 this.productForm = this.fb.group({
   basic: fb.group({
-  name: '',
-  active: false,
-  unity: ''
+  name: ['', Validators.required],
+  active: true,
+  unity: ['', Validators.required]
   }),
 });
 }
 
 ngOnInit() {
-  /*if (this.product) {
+  if (this.product) {
       this.productForm.setValue({
           basic: {
-            //  ...pick(this.product, ['name', 'description', 'active']),
-              //features: this.product.features || [''],
+              ...pick(this.product, ['name', 'unity', 'active']),
+
           },
-          expiration: {
-              //...pick(this.product, ['expirationDate']),
-          }
+
       });
 
-  }*/
+  }
 }
 
 ngOnChanges() {
@@ -61,15 +59,17 @@ get isBasicInvalid(): boolean {
       this.productWizard.goTo(this.productWizard.pageCollection.pages.first.id);
       this.productWizard.reset();
   }
-
+  //utilizando EventEmitter para enviar os dados cadastrados como um product
   handleFinish() {
       this.finish.emit({
           product: {
-
+                //aqui pego todo o conteúdo preenchido no form referente ao produto
               ...this.productForm.get('basic').value,
-              ...this.productForm.get('expiration').value,
+              //se tiver outra página posso enviar seu conteudo or aqui
+              /* ...this.productForm.get('expiration').value, */
           }
       });
+
       this.close();
   }
 

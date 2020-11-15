@@ -14,10 +14,9 @@ export class ProductsComponent implements OnInit {
   delete = false;
   productToBeDeleted;
   selectedProduct: IProduct;
-  productOpen;
+  productOpen: boolean;
   constructor(private productsService: ProductsService) {
     this.totalQuant=0;
-    this.productOpen=true;
   }
   ngOnInit(): void {}
 
@@ -47,15 +46,22 @@ onEdit(product) {
     this.selectedProduct = product;
 }
 
+addTotal(quant){
+  this.totalQuant=this.totalQuant+quant;
+  console.log('aqui total = '+ this.totalQuant);
+}
+
 handleFinish(event) {
-  console.log("aquiiiii handleFinish")
+
     if (event && event.product) {
         if (this.selectedProduct) {
             // Edit Flow
+            console.log('aqui no handle do editar')
             this.productsService.editProduct(this.selectedProduct.id, event.product);
         } else {
             // Save New
             this.productsService.addProduct(event.product);
+            console.log('aqui no handle do editar add')
 
         }
     }

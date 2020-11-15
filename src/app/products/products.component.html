@@ -5,7 +5,8 @@
 
 <clr-datagrid>
 <clr-dg-column clrDgField="name">Nome</clr-dg-column>
-<clr-dg-column>Data da contagem</clr-dg-column>
+<clr-dg-column clrDgField="countDate">Data da contagem</clr-dg-column>
+<clr-dg-column clrDgField="quant">Quantidade</clr-dg-column>
 <clr-dg-column clrDgField="active">Active</clr-dg-column>
 <clr-dg-row *clrDgItems="let product of products$ | async; trackBy
 trackById"
@@ -18,6 +19,7 @@ trackById"
   </clr-dg-action-overflow>
 <clr-dg-cell>{{product.name}}</clr-dg-cell>
 <clr-dg-cell>{{product.countDate}}</clr-dg-cell>
+<clr-dg-cell >{{product.quant}}</clr-dg-cell>
 <clr-dg-cell>
 <span class="label" [ngClass]="{'label-success':
 product.active, 'label-danger':
@@ -31,8 +33,8 @@ product.active, 'label-danger':
 <clr-dg-page-size [clrPageSizeOptions]="[10,20,50]">Produtos
 por pág</clr-dg-page-size>
 {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-of {{pagination.totalItems}} products. Estoque Total = {{totalQuant}}
-</clr-dg-pagination>
+de {{pagination.totalItems}} produtos.</clr-dg-pagination>
+
 </clr-dg-footer>
 </clr-datagrid>
 

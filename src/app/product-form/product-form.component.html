@@ -4,8 +4,8 @@
   <clr-wizard-title>{{product? 'Editar Produto' : 'Adicionar Novo Produto'}}</clr-wizard-title>
   <clr-wizard-button [type]="'cancel'" (click)="handleClose()">Cancelar</clr-wizard-button>
   <clr-wizard-button [type]="'previous'">Voltar</clr-wizard-button>
-  <clr-wizard-button [type]="'next'">Próximo</clr-wizard-button>
-  <clr-wizard-button [type]="'finish'" (click)="handleClose()">Finalizar</clr-wizard-button>
+  <clr-wizard-button [clrWizardButtonDisabled]="isBasicInvalid" [type]="'next'">Próximo</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'" (click)="handleFinish()">Finalizar</clr-wizard-button>
 
   <clr-wizard-page>
   <ng-template clrPageTitle>Cadastrar Produto</ng-template>
@@ -16,13 +16,21 @@
     <label for="product-name">Nome do produto *</label>
     <input clrInput type="text" id="product-name"
     placeholder="produto x..." formControlName="name">
+    <clr-control-error>Esse campo é obrigatório!</clr-control-error>
     </clr-input-container>
 
     <clr-input-container>
       <label for="product-name">Unidade Básica *</label>
       <input clrInput type="text" id="product-unity"
       placeholder="Kg..." formControlName="unity">
+      <clr-control-error>Esse campo é obrigatório!</clr-control-error>
       </clr-input-container>
+
+      <div class="toggle-switch">
+        <input type="checkbox" id="active"
+        formControlName="active">
+        <label for="active"> Ativo</label>
+        </div>
   </div>
 
   </clr-wizard-page>
