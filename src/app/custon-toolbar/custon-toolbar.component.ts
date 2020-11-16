@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./custon-toolbar.component.css']
 })
 export class CustonToolbarComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

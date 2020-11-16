@@ -38,10 +38,7 @@ export class ProductsComponent implements OnInit {
     this.handleCancel();
     this.productsService.removeProduct(this.productToBeDeleted);
   }
- /*  confirmCount() {
-    this.handleCancel();
-    //this.productsService.editProduct(this.selectedProduct.id, event.product);
-  } */
+
   addProduct() {
     this.productOpen = true;
     this.selectedProduct = undefined;
@@ -52,7 +49,7 @@ onCount(product) {
 }
 
 onEdit(product) {
-    //this.count = counting;
+
     this.productOpen = true;
     this.selectedProduct = product;
     console.log("on edit "+ this.counting)

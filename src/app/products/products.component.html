@@ -12,12 +12,21 @@
 <clr-dg-row *clrDgItems="let product of products$ | async; trackBy
 trackById"
 [clrDgItem]="product">
-<clr-dg-action-overflow>
-  <button class="action-item"
-  (click)="onEdit(product)">Editar</button>
-  <button class="action-item"
-  (click)="onDelete(product)">Deletar</button>
+<clr-dg-action-overflow [matMenuTriggerFor]="menu">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onEdit(product)" class="action-item">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+    <button mat-menu-item (click)="onDelete(product)" class="action-item">
+      <mat-icon>delete</mat-icon>
+      <span>Deletar</span>
+    </button>
+
+  </mat-menu>
+
   </clr-dg-action-overflow>
+
   <clr-dg-cell>
     <button mat-raised-button (click)="onCount(product)">Contar</button>
   </clr-dg-cell>
@@ -56,10 +65,3 @@ de {{pagination.totalItems}} produtos.</clr-dg-pagination>
 (finish)="handleFinish($event)"
 ></spa-product-form>
 
-<!-- <spa-count-product
-*ngIf="count"
-[product]="productToBeCounted"
-(cancel)="handleCancel()"
-(confirm)="handleFinish($event)"
-></spa-count-product>
- -->
