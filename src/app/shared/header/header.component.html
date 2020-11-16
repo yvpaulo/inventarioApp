@@ -3,15 +3,13 @@
       <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item disabled>
-      <mat-icon>dialpad</mat-icon>
-      <span><a routerLink="/relatorio" routerLinkActive="selected">Relatório</a></span>
-
-
+    <button mat-menu-item>
+      <mat-icon>home</mat-icon>
+      <span><a routerLink="/home" routerLinkActive="selected">Home</a></span>
     </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Contato</span>
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span><a routerLink="/relatorio" routerLinkActive="selected">Relatórios</a></span>
     </button>
   </mat-menu>
     <span>Controle de Inventário App</span>

@@ -1,6 +1,7 @@
 <form [formGroup]="productForm">
   <clr-wizard #productWizard [clrWizardOpen]="true"
-  clrWizardSize="lg" (clrWizardOnCancel)="handleClose()">
+  clrWizardSize="md" (clrWizardOnCancel)="handleClose()">
+  <!-- O título do form será de acordo ao que foi solicitado -->
   <clr-wizard-title>{{product && counting? 'Contar Produto'
                     : product? 'Editar Produto':
                      'Adicionar Novo Produto'}}</clr-wizard-title>
@@ -12,6 +13,7 @@
   <clr-wizard-page>
   <div formGroupName="basic">
     <ng-template clrPageTitle>Inventário de Produto</ng-template>
+    <!-- Se estiver contando o produto exibirá essa parte -->
     <div *ngIf="counting">
 
       <clr-input-container>
@@ -32,6 +34,8 @@
           </clr-input-container>
 
     </div>
+    <!-- Se estiver não contando o produto exibirá essa parte -->
+    <!-- Ou seja para o cadastro ou edição -->
     <div *ngIf="!counting">
     <clr-input-container>
     <label for="product-name">Nome do produto *</label>
@@ -59,8 +63,6 @@
   <ng-template clrPageTitle>Cadastrar Embalagens</ng-template>
   ...A ser implementado
   </clr-wizard-page>
-
-
 
 </clr-wizard>
 

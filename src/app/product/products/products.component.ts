@@ -26,7 +26,6 @@ export class ProductsComponent implements OnInit {
     return item.id;
   }
 
-
   onDelete(product) {
     this.delete = true;
     this.productToBeDeleted = product;
@@ -43,34 +42,30 @@ export class ProductsComponent implements OnInit {
     this.productOpen = true;
     this.selectedProduct = undefined;
 }
-onCount(product) {
+  onCount(product) {
     this.counting = true;
     this.onEdit(product);
 }
 
-onEdit(product) {
+  onEdit(product) {
 
     this.productOpen = true;
     this.selectedProduct = product;
-    console.log("on edit "+ this.counting)
-}
+    }
 
-addTotal(quant){
+  addTotal(quant){
   this.totalQuant=this.totalQuant+quant;
-  console.log('aqui total = '+ this.totalQuant);
-}
+  }
 
-handleFinish(event) {
+  handleFinish(event) {
 
     if (event && event.product) {
         if (this.selectedProduct) {
             // Edit Flow
-
             this.productsService.editProduct(this.selectedProduct.id, event.product);
         } else {
             // Save New
             this.productsService.addProduct(event.product);
-
         }
     }
     this.productOpen = false;
