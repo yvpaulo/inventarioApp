@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CustonTableComponent } from './custon-table/custon-table.component'
+import { CustonTableComponent } from './shared/custon-table/custon-table.component'
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', component: HomeComponent },
   { path: 'relatorio', component: CustonTableComponent },
+  { path: '**', component: HomeComponent },
 
 ];
 

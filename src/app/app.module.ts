@@ -14,39 +14,48 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { CustonTableComponent } from './custon-table/custon-table.component';
+/* import { CustonTableComponent } from './shared/custon-table/custon-table.component'; */
 import { CustonToolbarComponent } from './custon-toolbar/custon-toolbar.component';
-import { ClarityModule } from '@clr/angular';
-import { ProductsComponent } from './products/products.component';
-import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
-import { ProductFormComponent } from './product-form/product-form.component';
+/* import { ClarityModule } from '@clr/angular'; */
+/* import { ProductsComponent } from './products/products.component'; */
+/* import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component'; */
+/* import { ProductFormComponent } from './product-form/product-form.component'; */
+/* import { ProductsComponent } from './product/products/products.component'; */
+import { ProductModule } from './product/product.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CustonTableComponent,
+/*     CustonTableComponent, */
     CustonToolbarComponent,
-    ProductsComponent,
-    DeleteProductModalComponent,
-    ProductFormComponent,
+    /* ProductsComponent, */
+   /*  DeleteProductModalComponent, */
+    /* ProductFormComponent, */
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule,
     MatTableModule,
     MatIconModule,
     MatToolbarModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    ClarityModule,
     MatButtonModule,
+    MatMenuModule,
+   /*  ClarityModule, */
+
     ReactiveFormsModule,
-    MatMenuModule
+
+
+    ProductModule
 
   ],
   providers: [],

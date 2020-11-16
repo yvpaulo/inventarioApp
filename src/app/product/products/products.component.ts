@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   selectedProduct: IProduct;
   productOpen: boolean;
   constructor(private productsService: ProductsService) {
-    this.totalQuant=0;
+    this.totalQuant = 0;
   }
   ngOnInit(): void {}
 
@@ -74,6 +74,6 @@ handleFinish(event) {
         }
     }
     this.productOpen = false;
-    this.counting=false;
+    this.counting = false;
 }
 }

@@ -17,14 +17,14 @@ productForm: FormGroup;
 @Input() counting: boolean;
 @Output() finish = new EventEmitter();
 @ViewChild('productWizard', { static: false }) productWizard: ClrWizard;
-quant:number;
+quant: number;
 constructor(private fb: FormBuilder) {
 this.productForm = this.fb.group({
   basic: fb.group({
   name: ['', Validators.required],
   active: true,
   unity: ['', Validators.required],
-  quant:0,
+  quant: 0,
   countDate: ''
   }),
 });
