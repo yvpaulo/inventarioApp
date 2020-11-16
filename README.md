@@ -52,13 +52,13 @@ Esse método **onCount** definirá a propriedade **productOpen** como *true* e a
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
 ## Bibliotecas Externas utilizadas no projeto
-**Angular Material**
-`https://material.angular.io/`
-**Clarity**
-`https://clarity.design/documentation`
+1) **Angular Material**
+[`https://material.angular.io/`](https://material.angular.io/)
+2) **Clarity**
+[`https://clarity.design/documentation`](https://clarity.design/documentation)
 
 ## Referências Bibliográficas
-O livro *Pro Angular 9, Build Powerful and Dynamic Web Apps* de Adam Freeman serviu como referência para este projeto além das documentações das bibliotecas acima e do Angular `https://angular.io/docs`
+O livro *Mohammed, Zama Khan - Angular projects_ build nine real-world applications from scratch using Angular 8 and TypeScript (2019, Packt Publishing)* serviu como referência para este projeto além das documentações das bibliotecas acima e do Angular [`https://angular.io/docs`](https://angular.io/docs)
 
 ## Development server
 
