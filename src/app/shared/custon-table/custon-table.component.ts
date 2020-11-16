@@ -1,8 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-
+import {MatTableDataSource} from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -25,33 +23,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 /**
- * @title Data table with sorting, pagination, and filtering.
+ * @title Table with sorting
  */
-
 @Component({
   selector: 'spa-custon-table',
   templateUrl: './custon-table.component.html',
   styleUrls: ['./custon-table.component.css']
 })
-export class CustonTableComponent{
+export class CustonTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    /*if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }*/
-  }
-
-  constructor() {
-
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 }
 
 
+
+/**/

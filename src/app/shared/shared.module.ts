@@ -12,9 +12,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 
 import { HeaderComponent } from './header/header.component';
+import { CustonTableComponent } from './custon-table/custon-table.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, CustonTableComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -35,7 +36,8 @@ import { HeaderComponent } from './header/header.component';
     MatFormFieldModule,
     MatButtonModule,
     MatMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustonTableComponent
 
   ]
 })

@@ -25,7 +25,7 @@ export class ProductsService {
     active: true,
     countDate: '13/11/2020',
     unity: 'kg',
-    quant:0,
+    quant: 0,
     },
     {
       id: generateId(),
@@ -34,7 +34,7 @@ export class ProductsService {
       active: true,
       countDate: '13/11/2020',
       unity: 'kg',
-      quant:10,
+      quant: 10,
       },
 
     ];
