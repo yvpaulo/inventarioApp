@@ -2,7 +2,7 @@
 
 SPA desenvolvida com Angular 10 como cumprimento parcial do Bootcamp Aceleração Global2 da Avanade e DIO. Desafio solicitado pela Camila Ribeiro.
 
-O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes requistos:
+O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes requisitos:
 
 1) Crie uma aplicação Angular (Não esqueça que todo código precisa estar no GitHub)
 2) Crie no mínimo 3 componentes que deverão estar interagindo na mesma página (Não esqueça das rotas)
@@ -11,9 +11,11 @@ O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes
 5) Crie uma explicação sobre o que foi feito, esta explicação será inserida na plataforma junto com o link para o código no GitHub.
 6) Você poderá criar um vídeo demonstrativo da aplicação construída, e publicá-lo no YouTube, passando o link de acesso na plataforma. Este passo 6, não é obrigatório, mas entrará como um diferencial.
 
+[![alt Vídeo de Apresentação](src/assets/video_apresentacao.png)](https://youtu.be/baBa9dAr2sI)
+
 ## Para testar a aplicação clique aqui => : [https://spa.com.br](https://wonderful-island-05f434810.azurestaticapps.net)
 
-Abaixo descrevo os ítens atendidos:
+Abaixo descrevo os itens atendidos:
 
 ## 1) Crie uma aplicação Angular (Não esqueça que todo código precisa estar no GitHub):
 
@@ -26,12 +28,12 @@ Tela Principal:
 
 ![alt Interação entre Componetes](src/assets/selectors.png)
 
-Esse requisito foi executado de várias formas, na figura acima é possível ver os seletores que proporcionam a montagem dos diversos componentes na tela de produtos, sendo o primeiro via data Gride, usando um service para popular os dados, o sengundo em forma de modal para deletar os produtos e o terceiro um wizard para cadastro, edição e contagem dos produtos.
+Esse requisito foi executado de várias formas, na figura acima é possível ver os seletores, com prefixo spa sugeridos pela Camila, que proporcionam a montagem dos diversos componentes na tela de produtos, sendo o primeiro via data Gride, usando um service para popular os dados, o segundo em forma de modal para deletar os produtos e o terceiro um wizard para cadastro, edição e contagem dos produtos.
 
 ### Navegação
 ![alt Navegacao entre Componetes](src/assets/navegacao.png)
 
-Na figura acima é possível visualizar o fluxo das rotas do app que tem como página inicial a Home, no app-component foi colocado um seletor para um header que servirá as diversas visulizações do app.
+Na figura acima é possível visualizar o fluxo das rotas do app que tem como página inicial a Home, no app-component foi colocado um seletor para um header que servirá as diversas visualizações do app.
 
 ## 3) Escolha no mínimo 4 componentes do Angular Material e incorpore eles em sua aplicação.
 
@@ -49,7 +51,7 @@ Nesta figura ainda se vê um exemplo de **Event Biding**: ***"(click)="onCount(p
 
 ![alt Interpolação](src/assets/interpolacao.png)
 
-Esse método **onCount** definirá a propriedade **productOpen** como *true* e a diretiva **\*NgIf** será atendida o que abrirá form para atualização da contagem, observe que a propriedade **counting** será marcada como *true* tambem ao acionar esse botão o que será recebido no componte filho pela **@Input** e modificará o seu comportamento, pois o mesmo form servirá tamto para cadastro, edição e contagem dos produtos a depender das propriedades recebidas, neste form ao ser finalizada a operação, através do **@Output** a propriedade **finish** seŕa devolvida por Event Biding o que causará reações no componete pai.
+Esse método **onCount** definirá a propriedade **productOpen** como *true* e a diretiva **\*NgIf** será atendida o que abrirá o form para atualização da contagem, observe que a propriedade **counting** será marcada como *true* também ao acionar esse botão o que será recebido no componente filho pela **@Input** e modificará o seu comportamento, pois o mesmo form servirá tanto para cadastro, edição e contagem dos produtos a depender das propriedades recebidas, neste form ao ser finalizada a operação, através do **@Output** a propriedade **finish** seŕa devolvida por Event Biding o que causará reações no componente pai.
 
 ## Extras
 
