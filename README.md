@@ -1,6 +1,6 @@
 # SPA Angular
 
-SPA desenvolvida com Angular 10 como cumprimento partcial do Bootcamp Aceleração Global2 da Avanade e DIO.
+SPA desenvolvida com Angular 10 como cumprimento parcial do Bootcamp Aceleração Global2 da Avanade e DIO. Desafio solicitado pela Camila Ribeiro.
 
 O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes requistos:
 
@@ -10,6 +10,8 @@ O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes
 4) Crie em uma das páginas uma interação através da Interpolação e/ou utilizando Property Biding.
 5) Crie uma explicação sobre o que foi feito, esta explicação será inserida na plataforma junto com o link para o código no GitHub.
 6) Você poderá criar um vídeo demonstrativo da aplicação construída, e publicá-lo no YouTube, passando o link de acesso na plataforma. Este passo 6, não é obrigatório, mas entrará como um diferencial.
+
+## Para testar a aplicação clique aqui => : [https://spa.com.br](https://wonderful-island-05f434810.azurestaticapps.net)
 
 Abaixo descrevo os ítens atendidos:
 
@@ -26,19 +28,19 @@ Tela Principal:
 
 Esse requisito foi executado de várias formas, na figura acima é possível ver os seletores que proporcionam a montagem dos diversos componentes na tela de produtos, sendo o primeiro via data Gride, usando um service para popular os dados, o sengundo em forma de modal para deletar os produtos e o terceiro um wizard para cadastro, edição e contagem dos produtos.
 
-#### Navegação
+### Navegação
 ![alt Navegacao entre Componetes](src/assets/navegacao.png)
 
 Na figura acima é possível visualizar o fluxo das rotas do app que tem como página inicial a Home, no app-component foi colocado um seletor para um header que servirá as diversas visulizações do app.
 
-### 3) Escolha no mínimo 4 componentes do Angular Material e incorpore eles em sua aplicação.
+## 3) Escolha no mínimo 4 componentes do Angular Material e incorpore eles em sua aplicação.
 
 ![alt Materias Components](src/assets/materialComponents.png)
 
 Vários componentes do **Angular Material** foram usados como pode ser visto nos imports acima e nas telas da aplicação.
 
 
-### 4) Crie em uma das páginas uma interação através da Interpolação e/ou utilizando Property Biding.
+## 4) Crie em uma das páginas uma interação através da Interpolação e/ou utilizando Property Biding.
 
 ![alt Property Biding](src/assets/propertyBiding.png)
 
@@ -49,7 +51,23 @@ Nesta figura ainda se vê um exemplo de **Event Biding**: ***"(click)="onCount(p
 
 Esse método **onCount** definirá a propriedade **productOpen** como *true* e a diretiva **\*NgIf** será atendida o que abrirá form para atualização da contagem, observe que a propriedade **counting** será marcada como *true* tambem ao acionar esse botão o que será recebido no componte filho pela **@Input** e modificará o seu comportamento, pois o mesmo form servirá tamto para cadastro, edição e contagem dos produtos a depender das propriedades recebidas, neste form ao ser finalizada a operação, através do **@Output** a propriedade **finish** seŕa devolvida por Event Biding o que causará reações no componete pai.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+## Extras
+
+### **Estruturação**
+
+Procurei fazer uma estruturação do projeto seguindo algumas das orientações da Ravena (Geovana Ribeiro):
+
+![alt Estrutura](src/assets/estrutura.png)
+
+Então a SPA ficou com basicamente três módulos Home, Product e Shared, sendo o product um dos mais importantes pois contem as principais funcionalidades do sistema e no Shared deixei os componentes que podem ser compartilhados entre os outros módulos.
+
+### **Services / Observables / Otimização**
+
+Criei um **service** para produtos para lidar com as operações de *CRUD*  dos produtos, seguindo as orientações do Mario Santos foi usado o `ChangeDetectionStrategy.OnPush`  para melhorar um pouco a performance durante essas operações.
+
+### **Deploy**
+
+Fiz o deploy da aplicação utilizando o **Azure Static Apps** => [`https://wonderful-island-05f434810.azurestaticapps.net`](https://wonderful-island-05f434810.azurestaticapps.net)
 
 ## Bibliotecas Externas utilizadas no projeto
 1) **Angular Material**
@@ -59,6 +77,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Referências Bibliográficas
 O livro *Mohammed, Zama Khan - Angular projects_ build nine real-world applications from scratch using Angular 8 and TypeScript (2019, Packt Publishing)* serviu como referência para este projeto além das documentações das bibliotecas acima e do Angular [`https://angular.io/docs`](https://angular.io/docs)
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
 ## Development server
 
