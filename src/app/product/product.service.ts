@@ -6,7 +6,7 @@ id: number;
 cod:string;
 name: string;
 active: boolean;
-countDate: string;
+countDate: Date;
 unity: string;
 quant:number;
 }
@@ -23,7 +23,7 @@ export class ProductsService {
     cod:'xpto1',
     name: 'cimento externo',
     active: true,
-    countDate: '13/11/2020',
+    countDate: new Date(),
     unity: 'kg',
     quant: 0,
     },
@@ -32,7 +32,7 @@ export class ProductsService {
       cod:'xpto2',
       name: 'cimento interno',
       active: true,
-      countDate: '13/11/2020',
+      countDate: new Date(),
       unity: 'kg',
       quant: 10,
       },

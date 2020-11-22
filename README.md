@@ -13,7 +13,7 @@ O objetivo deste SPA foi atender ao desafio do Bootcamp citado, com os seguintes
 
 [![alt Vídeo de Apresentação](src/assets/video_apresentacao.png)](https://youtu.be/baBa9dAr2sI)
 
-## Para testar a aplicação clique aqui => : [https://spa.com.br](https://wonderful-island-05f434810.azurestaticapps.net)
+## Para testar a aplicação clique aqui => : [https://spa.com.br](https://yellow-mud-0f6f3fe10.azurestaticapps.net)
 
 Abaixo descrevo os itens atendidos:
 
