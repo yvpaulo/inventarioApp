@@ -3,7 +3,8 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, ViewChild, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
-import { parseInt } from 'lodash';
+import {PackageProduct} from '../product.service';
+/* import { parseInt } from 'lodash'; */
 /* import {pick, result} from 'lodash/'; */
 
 @Component({
@@ -31,6 +32,7 @@ this.productForm = this.fb.group({
   quant: 0 /* [{value: 0, disable: true}] */,
   countDate: '',
   newQuant: 0,
+  packaging1: new PackageProduct({name: '', quant: 0}),
   }),
 });
 
@@ -51,11 +53,14 @@ ngOnInit() {
               quant: this.product.quant,
               countDate: this.today, //this.product.countDate,
               newQuant: '',
+              packaging1: new PackageProduct({name: this.product.packaging1.name,
+                           quant: this.product.packaging1.quant}),
 
           },
 
       });
-
+        //console.log(this.product.packaging1.name);
+       /*  console.log(this.productForm.get('basic').get("packaging1['name']").value); */
       //this.name.valueChanges.subscribe( result => console.log(result/* ));
       /*console.log('aqui: '+this.productForm.get('basic').get('newQuant').value);
       if(this.productForm.get('basic').get('newQuant').value !== '') { */

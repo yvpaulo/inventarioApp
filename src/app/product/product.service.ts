@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+
+export class PackageProduct{
+   name: string;
+   quant: number;
+   constructor({name, quant}){
+     this.name = name;
+     this.quant = quant;
+   }
+}
+
 export interface IProduct {
 id: number;
-cod:string;
+cod: string;
 name: string;
 active: boolean;
 countDate: Date;
 unity: string;
-quant:number;
+quant: number;
+packaging1?: PackageProduct;
+packaging2?: PackageProduct;
 }
 function generateId() {
 return Math.floor(Math.random() * 10000);
@@ -26,6 +38,8 @@ export class ProductsService {
     countDate: new Date(),
     unity: 'kg',
     quant: 0,
+    packaging1: new PackageProduct({name: 'saco', quant: 1000}),
+    packaging2: new PackageProduct({name: 'palete', quant: 10000}),
     },
     {
       id: generateId(),
@@ -35,6 +49,8 @@ export class ProductsService {
       countDate: new Date(),
       unity: 'kg',
       quant: 10,
+      packaging1: new PackageProduct({name: 'saco', quant: 1000}),
+      packaging2: new PackageProduct({name: 'palete', quant: 10000}),
       },
 
     ];

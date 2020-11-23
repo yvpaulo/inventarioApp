@@ -9,7 +9,8 @@
   <clr-dg-column clrDgField="name">Nome</clr-dg-column>
 <clr-dg-column clrDgField="countDate">Data da contagem</clr-dg-column>
 <clr-dg-column clrDgField="quant" [clrDgColType]="'number'">Quantidade</clr-dg-column>
-<clr-dg-column clrDgField="active">Active</clr-dg-column>
+<!-- <clr-dg-column clrDgField="active">Active</clr-dg-column> -->
+<!-- <clr-dg-column clrDgField="packaging1.name">Embalagem 1</clr-dg-column> -->
 <clr-dg-row *clrDgItems="let product of products$ | async; trackBy
 trackById"
 [clrDgItem]="product">
@@ -35,12 +36,13 @@ trackById"
 <clr-dg-cell>{{product.name}}</clr-dg-cell>
 <clr-dg-cell>{{product.countDate | date: 'dd/MM/yyy'}}</clr-dg-cell>
 <clr-dg-cell >{{product.quant +" "+ product.unity}}</clr-dg-cell>
-<clr-dg-cell>
+<!-- <clr-dg-cell >{{product.packaging1 ? product.packaging1.name+" = "+product.packaging1.quant+" "+product.unity : ""}}</clr-dg-cell> -->
+<!-- <clr-dg-cell>
 <span class="label" [ngClass]="{'label-success':
 product.active, 'label-danger':
 !product.active}">{{product.active ?
 'Active': 'Inactive'}}</span>
-</clr-dg-cell>
+</clr-dg-cell> -->
 
 </clr-dg-row>
 <clr-dg-footer>
