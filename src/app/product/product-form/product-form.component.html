@@ -13,24 +13,19 @@
   <clr-wizard-page>
   <div formGroupName="basic">
     <ng-template clrPageTitle>Inventário de Produto </ng-template>
+    <div text-st: center *ngIf="this.product">
+      <b>Produto: {{this.product.name}}</b>
+    </div>
     <!-- Se estiver contando o produto exibirá essa parte -->
     <div *ngIf="counting">
        <clr-input-container>
-        <label >Quantidade inicial =  {{this.product.quant}}</label>
-        <label >Quantidade atual =  {{this.newQuant}}</label>
+        <label >Quantidade inicial =  {{this.product.quant + ' ' + this.product.unity }}</label>
+        <label >Quantidade atual =  {{this.newQuant}} {{this.product.unity}}</label>
         <label for="product-newQuant">Nova Quantidade</label>
          <input clrInput type="text" id="product-newQuant" formControlName="newQuant"
          placeholder="digite o valor da contagem">
 
         </clr-input-container>
-        <br>
-        <div class="example-button-row">
-          <button mat-raised-button (click)="this.newQuantMetodo('+')">+</button>
-
-          <button mat-raised-button (click)="this.newQuantMetodo('-')">-</button>
-
-          <!-- <button mat-raised-button (click)="this.newQuantMetodo('*')">x</button> -->
-        </div>
 
       <clr-input-container hidden>
 
@@ -40,11 +35,42 @@
 
         </clr-input-container>
 
+        <clr-radio-container clrInline>
+          <label>Escolha se o valor inserido será por unidade ou embalagem</label>
+          <clr-radio-wrapper>
 
+            <input type="radio" clrRadio value =1 formControlName="packagingValue"/>
+            <label>{{this.product.unity}}</label>
+          </clr-radio-wrapper>
+        <clr-radio-wrapper *ngIf="this.product.packaging1.name !==''">
+
+          <input type="radio" clrRadio value ="{{this.product.packaging1.quant}}" checked formControlName="packagingValue"/>
+          <label>{{this.product.packaging1.name}}</label>
+        </clr-radio-wrapper>
+
+        <clr-radio-wrapper *ngIf="this.product.packaging2.name !==''">
+           <input type="radio" clrRadio value ="{{this.product.packaging2.quant}}" formControlName="packagingValue"/>
+           <label>{{this.product.packaging2.name}}</label>
+        </clr-radio-wrapper>
+
+        <clr-radio-wrapper *ngIf="this.product.packaging3.name !==''">
+          <input type="radio" clrRadio value ="{{this.product.packaging3.quant}}" formControlName="packagingValue"/>
+          <label>{{this.product.packaging3.name}}</label>
+       </clr-radio-wrapper>
+
+        </clr-radio-container>
+        <div>Escolhida: {{this.productForm.get('basic').get('packagingValue').value}} / {{this.product.unity}}</div>
+        <br>
+        <div class="example-button-row">
+          <button mat-raised-button (click)="this.newQuantMetodo('+')">+</button>
+
+          <button mat-raised-button (click)="this.newQuantMetodo('-')">-</button>
+
+        </div>
 
         <clr-input-container>
           <label for="product-countDate">Data da Contagem</label>
-          <input clrInput type="date" id="product-countDate"
+          <input  placeholder="{{this.today}}" clrInput type="date" id="product-countDate"
           formControlName="countDate">
 
           </clr-input-container>
@@ -74,25 +100,47 @@
       <clr-control-error>Esse campo é obrigatório!</clr-control-error>
       </clr-input-container>
 
-      <div class="toggle-switch">
+       <div class="toggle-switch">
         <input type="checkbox" id="active"
         formControlName="active">
         <label for="active"> Ativo</label>
         </div>
 
-        <!-- <clr-input-container>
-          <label for="product-packaging1.name">Embalagem Principal</label>
-          <input clrInput type="text" id="packaging1.name"
-          placeholder="Saco..." formArrayName="packaging1().name">
-
-          </clr-input-container>
+        <clr-input-container>
+          <label for="product-packaging1.name">Embalagem 1</label>
+          <input clrInput type="text" id="packaging1_name"
+          placeholder="Saco..." formControlName="packaging1_name">
+        </clr-input-container>
 
           <clr-input-container>
             <label for="product-packaging1.quant">Quantidade da unidade básica</label>
-            <input clrInput type="text" id="packaging1.quant"
-            placeholder="10..." formControlName="packaging1().quant">
+            <input clrInput type="text" id="packaging1_quant"
+            placeholder="10..." formControlName="packaging1_quant">
+          </clr-input-container>
 
-            </clr-input-container> -->
+          <clr-input-container>
+            <label for="product-packaging1.name">Embalagem 2</label>
+            <input clrInput type="text" id="packaging2_name"
+            placeholder="Saco..." formControlName="packaging2_name">
+          </clr-input-container>
+
+            <clr-input-container>
+              <label for="product-packaging1.quant">Quantidade da unidade básica</label>
+              <input clrInput type="text" id="packaging2_quant"
+              placeholder="10..." formControlName="packaging2_quant">
+            </clr-input-container>
+
+            <clr-input-container>
+              <label for="product-packaging1.name">Embalagem 3</label>
+              <input clrInput type="text" id="packaging3_name"
+              placeholder="Saco..." formControlName="packaging3_name">
+            </clr-input-container>
+
+              <clr-input-container>
+                <label for="product-packaging1.quant">Quantidade da unidade básica</label>
+                <input clrInput type="text" id="packaging3_quant"
+                placeholder="10..." formControlName="packaging3_quant">
+              </clr-input-container>
   </div>
 </div>
   </clr-wizard-page>

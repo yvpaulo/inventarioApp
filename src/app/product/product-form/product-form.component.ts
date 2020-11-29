@@ -1,5 +1,5 @@
-import { DatePipe } from '@angular/common';
-import { ThrowStmt } from '@angular/compiler';
+/* import { DatePipe } from '@angular/common';
+import { ThrowStmt } from '@angular/compiler'; */
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, ViewChild, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
@@ -32,7 +32,17 @@ this.productForm = this.fb.group({
   quant: 0 /* [{value: 0, disable: true}] */,
   countDate: '',
   newQuant: 0,
-  packaging1: new PackageProduct({name: '', quant: 0}),
+  packagingValue: 1,
+  packaging1: new PackageProduct('', 0),
+  packaging1_name: '',
+  packaging1_quant: 0,
+  packaging2: new PackageProduct('', 0),
+  packaging2_name: '',
+  packaging2_quant: 0,
+  packaging3: new PackageProduct('', 0),
+  packaging3_name: '',
+  packaging3_quant: 0,
+
   }),
 });
 
@@ -53,34 +63,26 @@ ngOnInit() {
               quant: this.product.quant,
               countDate: this.today, //this.product.countDate,
               newQuant: '',
-              packaging1: new PackageProduct({name: this.product.packaging1.name,
-                           quant: this.product.packaging1.quant}),
+              packagingValue: 1,
+             /*  packaging1: this.product.packaging1 ? {name: this.product.packaging1.name,
+                           quant: this.product.packaging1.quant} : null, */
+              packaging1: this.product.packaging1 ? this.product.packaging1 : new PackageProduct('', 0),
+              packaging1_name: this.product.packaging1 ? this.product.packaging1.name : '',
+              packaging1_quant: this.product.packaging1 ? this.product.packaging1.quant : 0,
+
+              packaging2: this.product.packaging2 ? this.product.packaging2 : new PackageProduct('', 0),
+              packaging2_name: this.product.packaging2.name,
+              packaging2_quant: this.product.packaging2.quant,
+
+              packaging3: this.product.packaging3 ? this.product.packaging3 : new PackageProduct('', 0),
+              packaging3_name: this.product.packaging3 ? this.product.packaging3.name : '',
+              packaging3_quant: this.product.packaging3 ? this.product.packaging3.quant : 0,
 
           },
 
       });
-        //console.log(this.product.packaging1.name);
-       /*  console.log(this.productForm.get('basic').get("packaging1['name']").value); */
-      //this.name.valueChanges.subscribe( result => console.log(result/* ));
-      /*console.log('aqui: '+this.productForm.get('basic').get('newQuant').value);
-      if(this.productForm.get('basic').get('newQuant').value !== '') { */
-
-     /*  this.productForm.get('basic').get('newQuant')
-                      .valueChanges.subscribe( result => this.newQuantMetodo(result)); */
-
-      /* } */
-      //console.log(this.productForm.get('basic').get('quant').value);
-
-     /*  if(this.newQuant)
-      { */
-       /*  this.productForm.setValue({
-          basic: {
-              quant: 20,
-          },
-      }); */
-     // }
-
-
+     /*  let { name, quant} = this.productForm.get('basic').get('packaging1').value;
+      console.log(`name = ${name} Quant ${quant}`); */
   }
 }
 
@@ -97,8 +99,6 @@ get isBasicInvalid(): boolean {
 }
 
 newQuantMetodo(symbol: string): void {
-  /*   if (this.productForm.get('basic').get('newQuant').dirty)
-  { */
     if (this.newQuant === undefined)
     {
       this.newQuant = this.product.quant;
@@ -107,10 +107,10 @@ newQuantMetodo(symbol: string): void {
     if (quant + 0)
     {
       if (symbol === '+') {
-       this.newQuant += quant;
+       this.newQuant += (quant * this.productForm.get('basic').get('packagingValue').value);
       }
       if (symbol === '-') {
-        this.newQuant -= quant;
+        this.newQuant -= (quant * this.productForm.get('basic').get('packagingValue').value);
       }
 
       this.productForm.get('basic').get('quant').setValue(this.newQuant);
@@ -118,8 +118,6 @@ newQuantMetodo(symbol: string): void {
     }
 
     }
-
-  /* } */
 
   handleClose(): void {
       this.finish.emit();
@@ -131,9 +129,34 @@ newQuantMetodo(symbol: string): void {
       this.productWizard.goTo(this.productWizard.pageCollection.pages.first.id);
       this.productWizard.reset();
   }
-  //utilizando EventEmitter para enviar os dados cadastrados como um product
+  // utilizando EventEmitter para enviar os dados cadastrados como um product
   handleFinish() {
-      this.finish.emit({
+
+    if (this.productForm.get('basic').get('packaging1_name').value !== ''){
+        let newPackage = new PackageProduct();
+        newPackage.name = this.productForm.get('basic').get('packaging1_name').value;
+        newPackage.quant = this.productForm.get('basic').get('packaging1_quant').value;
+        this.productForm.get('basic').get('packaging1').setValue(newPackage);
+
+    }
+
+    if (this.productForm.get('basic').get('packaging2_name').value !== ''){
+      let newPackage = new PackageProduct();
+      newPackage.name = this.productForm.get('basic').get('packaging2_name').value;
+      newPackage.quant = this.productForm.get('basic').get('packaging2_quant').value;
+      this.productForm.get('basic').get('packaging2').setValue(newPackage);
+
+    }
+    if (this.productForm.get('basic').get('packaging3_name').value !== ''){
+      let newPackage = new PackageProduct();
+      newPackage.name = this.productForm.get('basic').get('packaging3_name').value;
+      newPackage.quant = this.productForm.get('basic').get('packaging3_quant').value;
+      this.productForm.get('basic').get('packaging3').setValue(newPackage);
+
+  }
+
+    this.finish.emit({
+
           product: {
                 //aqui pego todo o conteúdo preenchido no form referente ao produto
               ...this.productForm.get('basic').value,
@@ -142,7 +165,7 @@ newQuantMetodo(symbol: string): void {
           }
       });
 
-      this.close();
+    this.close();
   }
 
 }

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 export class PackageProduct{
    name: string;
    quant: number;
-   constructor({name, quant}){
+   constructor(name?: string, quant?: number){
      this.name = name;
      this.quant = quant;
    }
@@ -21,6 +21,8 @@ unity: string;
 quant: number;
 packaging1?: PackageProduct;
 packaging2?: PackageProduct;
+packaging3?: PackageProduct;
+
 }
 function generateId() {
 return Math.floor(Math.random() * 10000);
@@ -32,25 +34,27 @@ return Math.floor(Math.random() * 10000);
 export class ProductsService {
   products: IProduct[] = [{
     id: generateId(),
-    cod:'xpto1',
-    name: 'cimento externo',
+    cod:'0001.00001.0020PA',
+    name: 'CIMENTCOLA INT CINZA AC1 20KG PA',
     active: true,
     countDate: new Date(),
-    unity: 'kg',
+    unity: 'Kg',
     quant: 0,
-    packaging1: new PackageProduct({name: 'saco', quant: 1000}),
-    packaging2: new PackageProduct({name: 'palete', quant: 10000}),
+    packaging1: new PackageProduct('Saco', 20),
+    packaging2: new PackageProduct('Palete de plástico', 1980),
+    packaging3: new PackageProduct('Palete de Papel', 1060),
     },
     {
       id: generateId(),
-      cod:'xpto2',
-      name: 'cimento interno',
+      cod: '0069.00001.0020PA',
+      name: 'CIMENTCOLA FLEXIVEL AC3 CINZA 20KG PA',
       active: true,
       countDate: new Date(),
-      unity: 'kg',
+      unity: 'Kg',
       quant: 10,
-      packaging1: new PackageProduct({name: 'saco', quant: 1000}),
-      packaging2: new PackageProduct({name: 'palete', quant: 10000}),
+      packaging1: new PackageProduct('Saco', 20),
+      packaging2: new PackageProduct('Palete de plástico', 1980),
+      packaging3: new PackageProduct('Palete de Papel', 1060),
       },
 
     ];
