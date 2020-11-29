@@ -78,7 +78,7 @@ export class ProductsService {
           },
           ...this.products,
       ];
-      this.products$.next(this.products)
+      this.products$.next(this.products);
   }
 
   editProduct(id, product) {
